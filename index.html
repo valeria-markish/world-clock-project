@@ -11,6 +11,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="src/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.40/moment-timezone-with-data-1970-2030.min.js"></script>
     <title>World Clock 🕰</title>
   </head>
   <body>
@@ -21,19 +23,19 @@
         <option value="">Lisbon 🇵🇹</option>
         <option value="">Barcelona 🇪🇸</option>
       </select>
-      <div class="city">
+      <div class="city" id="lisbon">
         <div class="header">
           <h2>Lisbon 🇵🇹</h2>
-          <p class="date">January 31st 2023</p>
+          <p class="date"></p>
         </div>
-        <p class="time">1:48:15 <small>AM</small></p>
+        <p class="time"></p>
       </div>
-      <div class="city">
+      <div class="city" id="barcelona">
         <div class="header">
           <h2>Barcelona 🇪🇸</h2>
-          <p class="date">January 31st 2023</p>
+          <p class="date"></p>
         </div>
-        <p class="time">2:48:15 <small>AM</small></p>
+        <p class="time"></p>
       </div>
     </div>
     <footer>
