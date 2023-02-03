@@ -23,13 +23,14 @@ function update() {
 }
 
 function changeClock(event) {
-  let cityName = event.target.value;
-  if (cityName === "My_Location") {
-    cityName = moment.tz.guess();
-  }
-  let cityNameTitle = cityName.replace("_", " ").split("/")[1];
-  let cities = document.querySelector("#cities");
-  cities.innerHTML = ` <div class="city">
+  if (event.target.value.length > 0) {
+    let cityName = event.target.value;
+    if (cityName === "My_Location") {
+      cityName = moment.tz.guess();
+    }
+    let cityNameTitle = cityName.replace("_", " ").split("/")[1];
+    let cities = document.querySelector("#cities");
+    cities.innerHTML = `<div class="city">
         <div class="header">
           <h2>${cityNameTitle}</h2>
           <p class="date">${moment.tz(cityName).format("MMMM Do YYYY")}</p>
@@ -38,13 +39,17 @@ function changeClock(event) {
           .tz(cityName)
           .format("h:mm:ss [<small>]A[</small>]")}</p>
       </div>`;
-
+  }
   setInterval(function () {
+    let cityName = event.target.value;
+    if (cityName === "My_Location") {
+      cityName = moment.tz.guess();
+    }
     let cityDate = document.querySelector(".date");
     let cityTime = document.querySelector(".time");
-    cityDate.innerHTML = moment.tz(event.target.value).format("MMMM Do YYYY");
+    cityDate.innerHTML = moment.tz(cityName).format("MMMM Do YYYY");
     cityTime.innerHTML = moment
-      .tz(event.target.value)
+      .tz(cityName)
       .format("h:mm:ss [<small>]A[</small>]");
   }, 1000);
 }
