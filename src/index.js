@@ -1,23 +1,51 @@
 function update() {
-  let lisbon = document.querySelector("#lisbon");
-  if (lisbon) {
-    let lisbonDate = lisbon.querySelector(".date");
-    let lisbonTime = lisbon.querySelector(".time");
-
-    lisbonDate.innerHTML = moment.tz("Europe/Lisbon").format("MMMM Do YYYY");
-    lisbonTime.innerHTML = moment
-      .tz("Europe/Lisbon")
+  let honolulu = document.querySelector("#honolulu");
+  if (honolulu) {
+    let honoluluDate = honolulu.querySelector(".date");
+    let honoluluTime = honolulu.querySelector(".time");
+    honoluluDate.innerHTML = moment
+      .tz("Pacific/Honolulu")
+      .format("MMMM Do YYYY");
+    honoluluTime.innerHTML = moment
+      .tz("Pacific/Honolulu")
       .format("h:mm:ss [<small>]A[</small>]");
   }
-
-  let barcelona = document.querySelector("#barcelona");
-  if (barcelona) {
-    let barcelonaDate = barcelona.querySelector(".date");
-    let barcelonaTime = barcelona.querySelector(".time");
-
-    barcelonaDate.innerHTML = moment.tz("Europe/Madrid").format("MMMM Do YYYY");
-    barcelonaTime.innerHTML = moment
-      .tz("Europe/Madrid")
+  let havana = document.querySelector("#havana");
+  if (havana) {
+    let havanaDate = havana.querySelector(".date");
+    let havanaTime = havana.querySelector(".time");
+    havanaDate.innerHTML = moment.tz("America/Havana").format("MMMM Do YYYY");
+    havanaTime.innerHTML = moment
+      .tz("America/Havana")
+      .format("h:mm:ss [<small>]A[</small>]");
+  }
+  let reykjavik = document.querySelector("#reykjavik");
+  if (reykjavik) {
+    let reykjavikDate = reykjavik.querySelector(".date");
+    let reykjavikTime = reykjavik.querySelector(".time");
+    reykjavikDate.innerHTML = moment
+      .tz("Atlantic/Reykjavik")
+      .format("MMMM Do YYYY");
+    reykjavikTime.innerHTML = moment
+      .tz("Atlantic/Reykjavik")
+      .format("h:mm:ss [<small>]A[</small>]");
+  }
+  let dubai = document.querySelector("#dubai");
+  if (dubai) {
+    let dubaiDate = dubai.querySelector(".date");
+    let dubaiTime = dubai.querySelector(".time");
+    dubaiDate.innerHTML = moment.tz("Asia/Dubai").format("MMMM Do YYYY");
+    dubaiTime.innerHTML = moment
+      .tz("Asia/Dubai")
+      .format("h:mm:ss [<small>]A[</small>]");
+  }
+  let tokyo = document.querySelector("#tokyo");
+  if (tokyo) {
+    let tokyoDate = tokyo.querySelector(".date");
+    let tokyoTime = tokyo.querySelector(".time");
+    tokyoDate.innerHTML = moment.tz("Asia/Tokyo").format("MMMM Do YYYY");
+    tokyoTime.innerHTML = moment
+      .tz("Asia/Tokyo")
       .format("h:mm:ss [<small>]A[</small>]");
   }
 }
