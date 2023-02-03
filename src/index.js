@@ -38,7 +38,8 @@ function changeClock(event) {
         <p class="time">${moment
           .tz(cityName)
           .format("h:mm:ss [<small>]A[</small>]")}</p>
-      </div>`;
+      </div>
+      <div class="go-back"><a href="/">🔙 to cities</a></div>`;
   }
   setInterval(function () {
     let cityName = event.target.value;

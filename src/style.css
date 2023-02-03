@@ -53,7 +53,29 @@ p small {
   font-size: 15px;
   vertical-align: middle;
 }
+.go-back {
+  margin: 0 0 10px 15px;
+}
+.go-back a {
+  color: rgb(0, 0, 0);
+  line-height: 2;
+  text-decoration: none;
+}
+.go-back a:hover {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: large;
+}
 footer {
+  font-size: smaller;
   margin: 10px;
   text-align: center;
+}
+footer a {
+  color: rgb(60, 223, 255);
+  line-height: 2;
+  text-decoration: none;
+}
+footer a:hover {
+  color: rgba(60, 223, 255, 0.6);
+  font-size: large;
 }
