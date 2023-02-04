@@ -1,56 +1,40 @@
 function update() {
-  let honolulu = document.querySelector("#honolulu");
-  if (honolulu) {
-    let honoluluDate = honolulu.querySelector(".date");
-    let honoluluTime = honolulu.querySelector(".time");
-    honoluluDate.innerHTML = moment
-      .tz("Pacific/Honolulu")
-      .format("MMMM Do YYYY");
-    honoluluTime.innerHTML = moment
-      .tz("Pacific/Honolulu")
-      .format("h:mm:ss [<small>]A[</small>]");
-  }
-  let havana = document.querySelector("#havana");
-  if (havana) {
-    let havanaDate = havana.querySelector(".date");
-    let havanaTime = havana.querySelector(".time");
-    havanaDate.innerHTML = moment.tz("America/Havana").format("MMMM Do YYYY");
-    havanaTime.innerHTML = moment
-      .tz("America/Havana")
-      .format("h:mm:ss [<small>]A[</small>]");
-  }
-  let reykjavik = document.querySelector("#reykjavik");
-  if (reykjavik) {
-    let reykjavikDate = reykjavik.querySelector(".date");
-    let reykjavikTime = reykjavik.querySelector(".time");
-    reykjavikDate.innerHTML = moment
-      .tz("Atlantic/Reykjavik")
-      .format("MMMM Do YYYY");
-    reykjavikTime.innerHTML = moment
-      .tz("Atlantic/Reykjavik")
-      .format("h:mm:ss [<small>]A[</small>]");
-  }
-  let dubai = document.querySelector("#dubai");
-  if (dubai) {
-    let dubaiDate = dubai.querySelector(".date");
-    let dubaiTime = dubai.querySelector(".time");
-    dubaiDate.innerHTML = moment.tz("Asia/Dubai").format("MMMM Do YYYY");
-    dubaiTime.innerHTML = moment
-      .tz("Asia/Dubai")
-      .format("h:mm:ss [<small>]A[</small>]");
-  }
-  let tokyo = document.querySelector("#tokyo");
-  if (tokyo) {
-    let tokyoDate = tokyo.querySelector(".date");
-    let tokyoTime = tokyo.querySelector(".time");
-    tokyoDate.innerHTML = moment.tz("Asia/Tokyo").format("MMMM Do YYYY");
-    tokyoTime.innerHTML = moment
-      .tz("Asia/Tokyo")
-      .format("h:mm:ss [<small>]A[</small>]");
-  }
+  let cities = [
+    { name: "honolulu", tz: "Pacific/Honolulu" },
+    { name: "havana", tz: "America/Havana" },
+    { name: "reykjavik", tz: "Atlantic/Reykjavik" },
+    { name: "dubai", tz: "Asia/Dubai" },
+    { name: "tokyo", tz: "Asia/Tokyo" },
+  ];
+  let citiesDiv = document.querySelector("#cities");
+  let citiesElements = ``;
+  cities.forEach(function (city) {
+    let nameCity = city.name;
+    nameCity = nameCity.charAt(0).toUpperCase() + nameCity.slice(1);
+    citiesElements += `<div class="city" id="${city.name}">
+          <div class="header">
+            <h2>${nameCity}</h2>
+            <p class="date"></p>
+          </div>
+          <p class="time"></p>
+        </div>`;
+  });
+  citiesDiv.innerHTML = citiesElements;
+  cities.forEach(function (data) {
+    let cityElement = document.querySelector(`#${data.name}`);
+    if (cityElement) {
+      let date = cityElement.querySelector(".date");
+      let time = cityElement.querySelector(".time");
+      date.innerHTML = moment.tz(data.tz).format("MMMM Do YYYY");
+      time.innerHTML = moment
+        .tz(data.tz)
+        .format("h:mm:ss [<small>]A[</small>]");
+    }
+  });
 }
 
 function changeClock(event) {
+  clearInterval(updateInterval);
   if (event.target.value.length > 0) {
     let cityName = event.target.value;
     if (cityName === "My_Location") {
@@ -84,7 +68,10 @@ function changeClock(event) {
 }
 
 update();
-setInterval(update, 1000);
+let exists = document.querySelector("#honolulu");
+if ((exists = true)) {
+  updateInterval = setInterval(update, 1000);
+}
 
 let city = document.querySelector("#city");
 city.addEventListener("change", changeClock);
